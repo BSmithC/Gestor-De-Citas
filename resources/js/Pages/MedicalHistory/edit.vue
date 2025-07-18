@@ -9,7 +9,7 @@
                 Historial Medico
             </div>
         </template>
-
+        
         <template #default>
         </template>
     </AuthenticatedLayout>

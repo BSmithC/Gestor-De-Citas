@@ -171,15 +171,6 @@
                                         <option>Familiar</option>
                                     </select>
                                 </div>
-                                
-                                <div>
-                                    <label for="status" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
-                                    <select v-model="storePatients.status" id="status" required 
-                                        class="w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500 transition-colors">
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
                         

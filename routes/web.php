@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\DoctorControllers;
 use App\Http\Controllers\DrugController;
+use App\Http\Controllers\MedicalHistoryController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/drugs',DrugController::class);
     Route::resource('/bills',BillController::class);
     Route::resource('/appointments',AppointmentController::class);
+    Route::resource('/medicalhistorys',MedicalHistoryController::class);
 
 
 });
