@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\appointment;
 use App\Models\Patient;
 use App\Models\User;
@@ -26,7 +27,7 @@ class AppointmentController extends Controller
                     ->orWhereRaw('appointments.date LIKE ?', ['%' . $search . '%'])
                     ->orWhereRaw('appointments.attended LIKE ?', ['%' . $search . '%']);
             });
-        }   
+        }
         if ($lastDays && $lastDays !== 'all') {
             if (is_numeric($lastDays)) {
                 $dateFrom = Carbon::now()->subDays((int) $lastDays)->startOfDay();
@@ -40,8 +41,10 @@ class AppointmentController extends Controller
             }
         }
         $appointments = $query->with('patient', 'doctor')->get();
-        return Inertia::render('Appointment/index', ['appointments' => $appointments, 'filters' => ['search' => $search,
-        'lastDays' => $lastDays],]);
+        return Inertia::render('Appointment/index', ['appointments' => $appointments, 'filters' => [
+            'search' => $search,
+            'lastDays' => $lastDays
+        ],]);
     }
 
     public function create()
@@ -84,7 +87,7 @@ class AppointmentController extends Controller
         $patients = Patient::all();
         $drugs = Drug::all();
         $doctors = User::all();
-        return Inertia::render('Appointment/edit', ['appointment' => $appointment, 'patients' => $patients, 'doctors' => $doctors,'drugs' => $drugs]);
+        return Inertia::render('Appointment/edit', ['appointment' => $appointment, 'patients' => $patients, 'doctors' => $doctors, 'drugs' => $drugs]);
     }
 
     public function update(Request $request, string $id)
