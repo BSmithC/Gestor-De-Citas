@@ -1,4 +1,5 @@
 <template>
+
     <Head title="Edit Appointment" />
     <AuthenticatedLayout>
         <template #header>
@@ -9,7 +10,7 @@
         <template #default>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                    <form @submit.prevent="UpdateAppointment" class="p-6 space-y-8">
+                    <form @submit.prevent="submit" class="p-6 space-y-8">
                         <!-- Three Column Layout -->
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             <!-- Left Column - Date and Notes -->
@@ -39,7 +40,7 @@
                                                             clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input id="datepicker" type="date" v-model="UpdateAppointments.date"
+                                                <input id="datepicker" type="date" v-model="form.date"
                                                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                     placeholder="Select date">
                                             </div>
@@ -58,7 +59,7 @@
                                                             clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input id="startime" type="time" v-model="UpdateAppointments.starttime"
+                                                <input id="startime" type="time" v-model="form.starttime"
                                                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                     placeholder="Select date">
                                             </div>
@@ -76,7 +77,7 @@
                                                             clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input id="endtime" type="time" v-model="UpdateAppointments.endtime"
+                                                <input id="endtime" type="time" v-model="form.endtime"
                                                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                     placeholder="Select date">
                                             </div>
@@ -84,7 +85,7 @@
                                         <div>
                                             <label for="notes"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Notes</label>
-                                            <textarea id="notes" rows="4" v-model="UpdateAppointments.title"
+                                            <textarea id="notes" rows="4" v-model="form.title"
                                                 class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                 placeholder="Enter appointment notes..."></textarea>
                                         </div>
@@ -111,7 +112,7 @@
                                             <label for="doctor-select"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
                                                 Doctor</label>
-                                            <select id="doctor-select" v-model="UpdateAppointments.doctor_id"
+                                            <select id="doctor-select" v-model="form.doctor_id"
                                                 class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 dark:text-white">
                                                 <option disabled value="">Select a doctor</option>
                                                 <option v-for="doctor in doctors" :key="doctor.id" :value="doctor.id">
@@ -137,10 +138,10 @@
                                                     <div>
                                                         <h4
                                                             class="text-sm font-semibold text-blue-800 dark:text-blue-200">
-                                                            Dr. {{ UpdateAppointments.doctor_id.name }} {{ UpdateAppointments.doctor_id.last_name }}
+                                                            Dr. {{ form.doctor_id.name }} {{ form.doctor_id.last_name }}
                                                         </h4>
                                                         <p class="text-xs text-blue-600 dark:text-blue-400">Specialty:
-                                                            {{ UpdateAppointments.doctor_id.specialty || 'General' }}</p>
+                                                            {{ form.doctor_id.specialty || 'General' }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,7 +169,7 @@
                                             <label for="drug-select"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
                                                 Medication</label>
-                                            <select id="drug-select" v-model="UpdateAppointments.drug_id"
+                                            <select id="drug-select" v-model="form.drug_id"
                                                 class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-green-500 focus:border-green-500 dark:text-white">
                                                 <option disabled value="">Select a medication</option>
                                                 <option v-for="drug in drugs" :key="drug.id" :value="drug.id">
@@ -183,9 +184,9 @@
                                                 <div>
                                                     <h4
                                                         class="text-sm font-semibold text-green-800 dark:text-green-200">
-                                                        {{ UpdateAppointments.drug_id.name }}</h4>
+                                                        {{ form.drug_id.name }}</h4>
                                                     <p class="text-xs text-green-600 dark:text-green-400">Description:
-                                                        {{ UpdateAppointments.drug_id.description || 'Not specified' }}</p>
+                                                        {{ form.drug_id.description || 'Not specified' }}</p>
                                                 </div>
 
                                                 <div class="grid grid-cols-2 gap-2 text-xs">
@@ -193,19 +194,19 @@
                                                         <span
                                                             class="font-medium text-green-700 dark:text-green-300">Frequency:</span>
                                                         <span class="text-green-600 dark:text-green-400 ml-1">{{
-                                                            UpdateAppointments.drug_id.frequency || 'N/A' }}</span>
+                                                            form.drug_id.frequency || 'N/A' }}</span>
                                                     </div>
                                                     <div>
                                                         <span
                                                             class="font-medium text-green-700 dark:text-green-300">Duration:</span>
                                                         <span class="text-green-600 dark:text-green-400 ml-1">{{
-                                                            UpdateAppointments.drug_id.duration || 'N/A' }}</span>
+                                                            form.drug_id.duration || 'N/A' }}</span>
                                                     </div>
                                                     <div>
                                                         <span
                                                             class="font-medium text-green-700 dark:text-green-300">Route:</span>
                                                         <span class="text-green-600 dark:text-green-400 ml-1">{{
-                                                            UpdateAppointments.drug_id.route || 'N/A' }}</span>
+                                                            form.drug_id.route || 'N/A' }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -248,7 +249,7 @@ export default {
     },
     data() {
         return {
-            UpdateAppointments: {
+            form: {
                 title: '',
                 date: '',
                 starttime: '',
@@ -262,12 +263,10 @@ export default {
         }
     },
     methods: {
-        UpdateAppointment() {
-            console.log('Enviando: ', this.UpdateAppointments);
-            this.UpdateAppointments.date = this.formatDate(this.UpdateAppointments.date);
-            // this.UpdateAppointments.starttime = this.formatTime(this.UpdateAppointments.starttime);
-            // this.UpdateAppointments.endtime = this.formatTime(this.UpdateAppointments.endtime);
-            this.$inertia.put(route('appointments.update',this.appointment), this.UpdateAppointments, {
+        submit() {
+            console.log('Enviando: ', this.form);
+            this.form.date = this.formatDate(this.form.date);
+            this.$inertia.put(route('appointments.update', this.appointment), this.form, {
                 onSuccess: () => {
                     this.$emit('appointmentUpdated');
                 },

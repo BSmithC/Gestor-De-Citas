@@ -164,10 +164,10 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
                                 </svg>
-                                Invoice #{{ selectedBill.id }}
+                                Invoice #{{ form.id }}
                             </h2>
                             <div class="flex space-x-2">
-                                <Link :href="route('bills.edit', selectedBill.id)"
+                                <Link :href="route('bills.edit', form.id)"
                                     class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-yellow-800 bg-yellow-400 hover:bg-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-300 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -215,7 +215,7 @@
                                                     Name</dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.company_name || 'Not available' }}
+                                                    {{ form.company_name || 'Not available' }}
                                                 </dd>
                                             </div>
                                             <div class="grid grid-cols-3 gap-4">
@@ -223,7 +223,7 @@
                                                     (RNC)</dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.rnc || 'Not available' }}
+                                                    {{ form.rnc || 'Not available' }}
                                                 </dd>
                                             </div>
                                             <div class="grid grid-cols-3 gap-4">
@@ -231,7 +231,7 @@
                                                 </dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.company_address || 'Not available' }}
+                                                    {{ form.company_address || 'Not available' }}
                                                 </dd>
                                             </div>
                                             <div class="grid grid-cols-3 gap-4">
@@ -239,7 +239,7 @@
                                                 </dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.company_phone || 'Not available' }}
+                                                    {{ form.company_phone || 'Not available' }}
                                                 </dd>
                                             </div>
                                             <div class="grid grid-cols-3 gap-4">
@@ -247,7 +247,7 @@
                                                 </dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.company_email || 'Not available' }}
+                                                    {{ form.company_email || 'Not available' }}
                                                 </dd>
                                             </div>
                                         </dl>
@@ -278,7 +278,7 @@
                                                 </dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.patient.name }} {{ selectedBill.patient.last_name }}
+                                                    {{ form.patient.name }} {{ form.patient.last_name }}
                                                 </dd>
                                             </div>
                                             <div class="grid grid-cols-3 gap-4">
@@ -286,7 +286,7 @@
                                                 </dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    Dr. {{ selectedBill.user.name }}
+                                                    Dr. {{ form.user.name }}
                                                 </dd>
                                             </div>
                                             <div class="grid grid-cols-3 gap-4">
@@ -294,7 +294,7 @@
                                                     Type</dt>
                                                 <dd
                                                     class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
-                                                    {{ selectedBill.payment_type || 'Not specified' }}
+                                                    {{ form.payment_type || 'Not specified' }}
                                                 </dd>
                                             </div>
                                         </dl>
@@ -344,7 +344,7 @@
                                             </thead>
                                             <tbody
                                                 class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
-                                                <tr v-for="detail in selectedBill.bill_details" :key="detail.id"
+                                                <tr v-for="detail in form.bill_details" :key="detail.id"
                                                     class="hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
@@ -395,14 +395,14 @@
                                             <div class="text-sm font-medium text-gray-500 dark:text-gray-400">Subtotal
                                             </div>
                                             <div class="text-xl font-semibold text-gray-900 dark:text-white">{{
-                                                selectedBill.sub_total ? `$${selectedBill.sub_total}` : 'Not available'
-                                                }}</div>
+                                                form.sub_total ? `$${form.sub_total}` : 'Not available'
+                                            }}</div>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-600 p-4 rounded-lg">
                                             <div class="text-sm font-medium text-gray-500 dark:text-gray-400">Tax
                                                 (ITBIS)</div>
                                             <div class="text-xl font-semibold text-gray-900 dark:text-white">{{
-                                                selectedBill.itbis ? `$${selectedBill.itbis}` : 'Not available' }}</div>
+                                                form.itbis ? `$${selectedBill.itbis}` : 'Not available' }}</div>
                                         </div>
                                         <div
                                             class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
@@ -461,7 +461,16 @@ export default {
     },
     data() {
         return {
+            infoModal: false,
             form: {
+                id: null,
+                drugs_id: '',
+                users_id: '',
+                itbis: '',
+                sub_total: '',
+                total: '',
+                payment_type: '',
+                status: true,
                 search: this.filters.search || '',
                 lastDays: this.filters.lastDays || '1',
             }
@@ -478,45 +487,21 @@ export default {
             });
         },
         openModal(bill) {
-            this.selectedBill = { ...bill };
+            this.form = { ...bill };
             this.infoModal = true;
         },
         closeModal() {
             this.infoModal = false;
         },
-        updateBill() {
-            router.put(route('bills.update', this.selectedBill.id), this.selectedBill, {
-                onSuccess: () => this.closeModal()
-            });
-        },
-        storeBill() {
-            router.put(route('bills.store', this.selectedBill), this.selectedBill, {});
-        }
     },
-    data() {
-        return {
-            form: {
-                search: this.filters.search || '',
-            },
-            infoModal: false,
-            selectedBill: {
-                id: null,
-                drugs_id: '',
-                users_id: '',
-                itbis: '',
-                sub_total: '',
-                total: '',
-                payment_type: '',
-                status: true
-            }
-        };
-    },
+
     components: {
         Head,
         AuthenticatedLayout,
         Link,
         LastDays,
-        ref
+        ref,
+        router
     },
 };
 </script>

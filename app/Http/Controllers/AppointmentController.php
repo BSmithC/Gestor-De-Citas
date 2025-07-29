@@ -47,11 +47,11 @@ class AppointmentController extends Controller
         ],]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $patients = $request->patient;
         $doctors = User::all();
         $drugs = Drug::all();
-        $patients = Patient::all();
         return Inertia::render('Appointment/create', ['patients' => $patients, 'doctors' => $doctors, 'drugs' => $drugs]);
     }
 

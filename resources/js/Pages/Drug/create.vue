@@ -34,7 +34,7 @@
                         </div>
 
                         <!-- Form Content -->
-                        <form @submit.prevent="storeDrug" class="p-6 space-y-6">
+                        <form @submit.prevent="submit" class="p-6 space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Basic Information Column -->
                                 <div class="space-y-4">
@@ -42,7 +42,7 @@
                                         <label
                                             class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Medication
                                             Name*</label>
-                                        <input v-model="storeDrugs.name" type="text" id="name"
+                                        <input v-model="form.name" type="text" id="name"
                                             placeholder="e.g. Amoxicillin" required
                                             class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                     </div>
@@ -51,7 +51,7 @@
                                         <label
                                             class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Administration
                                             Route*</label>
-                                        <select v-model="storeDrugs.route" id="Route" required
+                                        <select v-model="form.route" id="Route" required
                                             class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                             <option value="" disabled selected>Select route</option>
                                             <option value="Oral">Oral</option>
@@ -67,7 +67,7 @@
                                         <label
                                             class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Duration*</label>
                                         <div class="relative">
-                                            <input v-model="storeDrugs.duration" type="text" id="duration"
+                                            <input v-model="form.duration" type="text" id="duration"
                                                 placeholder="e.g. 7 days" required
                                                 class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                             <div
@@ -88,7 +88,7 @@
                                     <div>
                                         <label
                                             class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
-                                        <textarea v-model="storeDrugs.description" id="message" rows="4"
+                                        <textarea v-model="form.description" id="message" rows="4"
                                             class="block p-3 w-full text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200"
                                             placeholder="Enter medication description, indications, or special instructions..."></textarea>
                                     </div>
@@ -97,7 +97,7 @@
                                         <label
                                             class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Frequency*</label>
                                         <div class="relative">
-                                            <input v-model="storeDrugs.frequency" type="text" id="frequency"
+                                            <input v-model="form.frequency" type="text" id="frequency"
                                                 placeholder="e.g. Every 8 hours" required
                                                 class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                             <div
@@ -151,7 +151,7 @@ import LastDays from '@/Components/LastDays.vue';
 export default {
     data() {
         return {
-            storeDrugs: {
+            form: {
                 name: '',
                 description: '',
                 route: '',
@@ -162,9 +162,9 @@ export default {
         };
     },
     methods: {
-        storeDrug() {
-            console.log(this.storeDrugs)
-            router.post(route('drugs.store'), this.storeDrugs, {
+        submit() {
+            console.log(this.form)
+            router.post(route('drugs.store'), this.form, {
                 onError: (errors) => {
                     this.errors = errors
                     console.log(errors)

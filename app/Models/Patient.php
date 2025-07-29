@@ -36,4 +36,12 @@ class Patient extends Model
     {
         return $this->hasMany(Bill::class, 'patient_id', 'id');
     }
+    public function medicalhistory()  
+    {
+        return $this->hasOne(medicalhistory::class, 'patient_id', 'id');
+    }
+    public function appointment()  
+    {
+        return $this->hasMany(appointment::class, 'patient_id', 'id');
+    }
 }

@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/drugs',DrugController::class);
     Route::resource('/bills',BillController::class);
     Route::resource('/appointments',AppointmentController::class);
-    Route::resource('/medicalhistorys',MedicalHistoryController::class);
+    Route::resource('/medicalhistories',MedicalHistoryController::class);
 
 
 });

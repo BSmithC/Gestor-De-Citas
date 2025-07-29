@@ -89,7 +89,7 @@ class BillController extends Controller
         $users = User::all();
         $drugs = Drug::all();
         $bill->load('drugs', 'user', 'BillDetails');
-        return Inertia::render('Bill/edit', ['editbills' => $bill, 'users' => $users, 'drugs' => $drugs]);
+        return Inertia::render('Bill/edit', ['bills' => $bill, 'users' => $users, 'drugs' => $drugs]);
     }
 
     public function update(Request $request, string $id)

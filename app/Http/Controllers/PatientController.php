@@ -20,7 +20,7 @@ class PatientController extends Controller
 
         if ($search) {
             $query->where(function (Builder $q) use ($search) {
-                $q->whereRaw('patients.name LIKE ?', ['%' . $search . '%'])
+                $q->whereRaw('patients.name LIKE?' , ['%' . $search . '%'])
                     ->orWhereRaw('patients.last_name LIKE ?', ['%' . $search . '%'])
                     ->orWhereRaw('patients.date_of_birth LIKE ?', ['%' . $search . '%'])
                     ->orWhereRaw('patients.insurance LIKE ?', ['%' . $search . '%'])
@@ -39,7 +39,7 @@ class PatientController extends Controller
                 $query->where('created_at', '>=', $dateFrom);
             }
         }
-        $patients = $query->get();
+        $patients = $query->with('medicalhistory')->get();
         return Inertia::render('Patient/index', ['patients' => $patients, 'filters' => [
         'search' => $search,'lastDays' => $lastDays],]);
     }
@@ -87,7 +87,7 @@ class PatientController extends Controller
     public function edit(string $id)
     {
         $patient = Patient::findOrFail($id);
-        return Inertia::render('Patient/edit', ['edictpatients' => $patient]);
+        return Inertia::render('Patient/edit', ['Patients' => $patient]);
         
     }
 

@@ -26,19 +26,19 @@
                         </div>
 
                         <!-- Form Content -->
-                        <form @submit.prevent="updateDrug" class="p-6 space-y-6">
+                        <form @submit.prevent="submit" class="p-6 space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Basic Information Column -->
                                 <div class="space-y-4">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Medication Name*</label>
-                                        <input v-model="editdrugs.name" type="text" id="name" placeholder="e.g. Amoxicillin" required 
+                                        <input v-model="drugs.name" type="text" id="name" placeholder="e.g. Amoxicillin" required 
                                             class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Administration Route*</label>
-                                        <select v-model="editdrugs.route" id="Route" required 
+                                        <select v-model="drugs.route" id="Route" required 
                                             class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                             <option value="" disabled selected>Select route</option>
                                             <option value="Oral">Oral</option>
@@ -53,7 +53,7 @@
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Duration*</label>
                                         <div class="relative">
-                                            <input v-model="editdrugs.duration" type="text" id="duration" placeholder="e.g. 7 days" required 
+                                            <input v-model="drugs.duration" type="text" id="duration" placeholder="e.g. 7 days" required 
                                                 class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,7 +68,7 @@
                                 <div class="space-y-4">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
-                                        <textarea v-model="editdrugs.description" id="message" rows="4" 
+                                        <textarea v-model="drugs.description" id="message" rows="4" 
                                             class="block p-3 w-full text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200" 
                                             placeholder="Enter medication description, indications, or special instructions..."></textarea>
                                     </div>
@@ -76,7 +76,7 @@
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Frequency*</label>
                                         <div class="relative">
-                                            <input v-model="editdrugs.frequency" type="text" id="frequency" placeholder="e.g. Every 8 hours" required 
+                                            <input v-model="drugs.frequency" type="text" id="frequency" placeholder="e.g. Every 8 hours" required 
                                                 class="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 transition-all duration-200">
                                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,18 +121,18 @@ import LastDays from '@/Components/LastDays.vue';
 
 export default {
     props: {
-    editdrugs: Object,
+    drugs: Object,
     },
     data() {
         return {
-            form: {editdrugs: this.editdrugs},
+            form: {drugs: this.drugs},
             errors: {}
         };
     },    
     methods: {
-        updateDrug() {
+        submit() {
             console.log(this.form)  
-            router.put(route('drugs.update',this.editdrugs), this.form.editdrugs, {
+            router.put(route('drugs.update',this.drugs), this.form.drugs, {
                 onError: (errors) => {
                     this.errors = errors
                     console.log(errors)
@@ -144,7 +144,8 @@ export default {
     Head,
     AuthenticatedLayout,
     LastDays,
-    Link
+    Link,
+    ref
     }
 };
 </script>

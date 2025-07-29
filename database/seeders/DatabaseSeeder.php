@@ -22,11 +22,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\Bill::factory(10)->create();
 
         \App\Models\BillDetail::factory(10)->create();
-        // $this->call(BillSeeder::class);
-
+        
         \App\Models\User::factory(10)->create();
 
         \App\Models\Appointment::factory(10)->create();
+
+        \App\Models\MedicalHistory::factory(10)->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Test User',

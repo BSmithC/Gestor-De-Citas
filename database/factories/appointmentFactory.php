@@ -24,8 +24,8 @@ class AppointmentFactory extends Factory
 
         return [
             'title' => $this->faker->sentence(3),
-            'doctor_id' => User::factory(), // O usa un ID fijo si ya tienes datos
-            'patient_id' => Patient::factory(),
+            'doctor_id' => $this->faker->numberBetween(1,10), // O usa un ID fijo si ya tienes datos
+            'patient_id' => $this->faker->numberBetween(1,10),
             'attended' => $this->faker->boolean(),
             'date' => $start->format('Y-m-d'),
             'starttime' => $start->format('H:i:s'),

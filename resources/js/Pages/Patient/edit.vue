@@ -19,19 +19,19 @@
                             </h3>
                         </div>
                         <!-- Formulario -->
-                        <form @submit.prevent="updatePatient" class="p-6 space-y-6">
+                        <form @submit.prevent="submit" class="p-6 space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Columna Izquierda -->
                                 <div class="space-y-4">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
-                                        <input v-model="edictpatients.name" 
+                                        <input v-model="patients.name" 
                                             class="w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200"
                                             placeholder="Ej: Juan">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Apellido</label>
-                                        <input v-model="edictpatients.last_name" 
+                                        <input v-model="patients.last_name" 
                                             class="w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200"
                                             placeholder="Ej: Pérez">
                                     </div>
@@ -40,12 +40,12 @@
                                 <div class="space-y-4">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha de Nacimiento</label>
-                                        <input v-model="edictpatients.date_of_birth" type="date" 
+                                        <input v-model="patients.date_of_birth" type="date" 
                                             class="w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Seguro Médico (ARS)</label>
-                                        <select v-model="edictpatients.insurance" 
+                                        <select v-model="patients.insurance" 
                                             class="w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200">
                                             <option value="Universal">Universal</option>
                                             <option value="Humano">Humano</option>
@@ -68,12 +68,12 @@
                                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Estado</label>
                                 <div class="flex items-center space-x-4">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" v-model="edictpatients.status" :value="true" 
+                                        <input type="radio" v-model="patients.status" :value="true" 
                                             class="form-radio h-5 w-5 text-purple-600 transition duration-150 ease-in-out">
                                         <span class="ml-2 text-gray-700 dark:text-gray-300">Activo</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" v-model="edictpatients.status" :value="false" 
+                                        <input type="radio" v-model="patients.status" :value="false" 
                                             class="form-radio h-5 w-5 text-purple-600 transition duration-150 ease-in-out">
                                         <span class="ml-2 text-gray-700 dark:text-gray-300">Inactivo</span>
                                     </label>
@@ -111,18 +111,18 @@ import LastDays from '@/Components/LastDays.vue';
 
 export default {
     props: {
-    edictpatients: Object,
+    patients: Object,
     },
     data() {
         return {
-            form: {edictpatients: this.edictpatients},
+            form: {patients: this.patients},
             errors: {}
         };
     },    
     methods: {
-        updatePatient() {
+        submit() {
             console.log(this.form)
-            router.put(route('patients.update',this.edictpatients), this.form.edictpatients, {
+            router.put(route('patients.update',this.patients), this.form.patients, {
                 onSuccess: (success) => {
                     this.success = success
                     // toast.success('¡Guardado con éxito!')

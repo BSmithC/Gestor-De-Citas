@@ -9,7 +9,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
                 </svg>
-                EDIT INVOICE #{{ updateBills.id }}
+                EDIT INVOICE #{{ form.id }}
             </div>
         </template>
 
@@ -34,7 +34,7 @@
                         </div>
 
                         <!-- Form Content -->
-                        <form @submit.prevent="updateBill" class="p-6 space-y-6">
+                        <form @submit.prevent="submit" class="p-6 space-y-6">
                             <!-- Services Table Section -->
                             <div
                                 class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-600">
@@ -132,7 +132,7 @@
                                         </h3>
                                     </div>
                                     <div class="p-4">
-                                        <select v-model="updateBills.users_id"
+                                        <select v-model="form.users_id"
                                             class="w-full px-4 py-2.5 mb-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
                                             <option disabled value="">Select Doctor</option>
                                             <option v-for="user in users" :key="user.id" :value="user">
@@ -144,22 +144,22 @@
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Name</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.users_id.name || 'Not selected' }}</p>
+                                                        form.users_id.name || 'Not selected' }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Phone</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.users_id.phone_number || 'Not available' }}</p>
+                                                        form.users_id.phone_number || 'Not available' }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.users_id.email || 'Not available' }}</p>
+                                                        form.users_id.email || 'Not available' }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Specialty</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.users_id.specialty || 'Not specified' }}</p>
+                                                        form.users_id.specialty || 'Not specified' }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,7 +184,7 @@
                                         </h3>
                                     </div>
                                     <div class="p-4">
-                                        <select v-model="updateBills.drug_id"
+                                        <select v-model="form.drug_id"
                                             class="w-full px-4 py-2.5 mb-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
                                             <option disabled value="">Select Medication</option>
                                             <option v-for="drug in drugs" :key="drug.id" :value="drug">
@@ -196,23 +196,23 @@
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Medication</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.drug_id.name || 'Not selected' }}</p>
+                                                        form.drug_id.name || 'Not selected' }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Administration
                                                     </p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.drug_id.route || 'Not specified' }}</p>
+                                                        form.drug_id.route || 'Not specified' }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Frequency</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.drug_id.frequency || 'Not specified' }}</p>
+                                                        form.drug_id.frequency || 'Not specified' }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm text-gray-500 dark:text-gray-400">Duration</p>
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        updateBills.drug_id.duration || 'Not specified' }}</p>
+                                                        form.drug_id.duration || 'Not specified' }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,7 +245,7 @@
                                             <label
                                                 class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Payment
                                                 Type</label>
-                                            <select v-model="updateBills.payment_type"
+                                            <select v-model="form.payment_type"
                                                 class="w-full px-4 py-2 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
                                                 <option value="Cash">Cash</option>
                                                 <option value="Credit Card">Credit Card</option>
@@ -256,13 +256,13 @@
                                         <div class="bg-gray-50 dark:bg-gray-600 p-4 rounded-lg">
                                             <p class="text-sm text-gray-700 dark:text-gray-300">Subtotal</p>
                                             <p class="text-xl font-semibold text-gray-900 dark:text-white">${{
-                                                updateBills.sub_total || '0.00' }}</p>
+                                                form.sub_total || '0.00' }}</p>
                                         </div>
                                         <div
                                             class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
                                             <p class="text-sm text-purple-600 dark:text-purple-400">Total Amount</p>
                                             <p class="text-2xl font-bold text-purple-700 dark:text-purple-300">${{
-                                                updateBills.total || '0.00' }}</p>
+                                                form.total || '0.00' }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -297,11 +297,11 @@ export default {
     props: {
         users: Object,
         drugs: Object,
-        editbills: Object,
+        bills: Object,
     },
     data() {
         return {
-            updateBills: {
+            form: {
                 drug_id: this.editbills?.drug_id ?? '',
                 users_id: this.editbills?.users_id ?? '',
                 itbis: this.editbills?.itbis ?? '',
@@ -314,7 +314,7 @@ export default {
             select_drug: ref({}),
             itbis_rate: 0.18,
             disable_inputs: true,
-            table_bill: this.editbills?.bill_details ?? [{ service: '', hour: 0, price: 0, }],
+            table_bill: this.bills?.bill_details ?? [{ service: '', hour: 0, price: 0, }],
             erros: {}
         };
     },
@@ -330,12 +330,6 @@ export default {
         },
         total() {
             this.subtotal + this.itbis;
-        },
-        selectuser() {
-            return this.users.find(user => user.id === this.updateBills.users_id) || {};
-        },
-        selectDrug() {
-            return this.drugs.find(drug => drug.id === this.updateBills.drug_id) || {};
         },
     },
     methods: {
@@ -353,19 +347,19 @@ export default {
             this.table_bill.splice(index, 1)
             this.disable_inputs = false;
         },
-        updateBill() {
-            this.updateBills.sub_total = this.subtotal.toFixed(2);
-            this.updateBills.itbis = this.itbis.toFixed(2);
-            this.updateBills.total = this.total.toFixed(2);
+        submit() {
+            this.form.sub_total = this.subtotal.toFixed(2);
+            this.form.itbis = this.itbis.toFixed(2);
+            this.form.total = this.total.toFixed(2);
             const data = {
                 form: {
-                    drug_id: this.updateBills.drug_id.id,
-                    itbis: this.updateBills.itbis,
-                    sub_total: this.updateBills.sub_total,
-                    total: this.updateBills.total,
-                    status: this.updateBills.status,
-                    payment_type: this.updateBills.payment_type,
-                    users_id: this.updateBills.users_id.id,
+                    drug_id: this.form.drug_id.id,
+                    itbis: this.form.itbis,
+                    sub_total: this.form.sub_total,
+                    total: this.form.total,
+                    status: this.form.status,
+                    payment_type: this.form.payment_type,
+                    users_id: this.form.users_id.id,
                 },
                 details: this.table_bill
             };

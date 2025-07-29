@@ -11,7 +11,7 @@
         <template #default>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                    <form @submit.prevent="storeAppointment" class="p-6 space-y-8">
+                    <form @submit.prevent="submit" class="p-6 space-y-8">
                         <!-- Three Column Layout -->
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             <!-- Left Column - Date and Notes -->
@@ -25,7 +25,7 @@
                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                                             </path>
                                         </svg>
-                                        APPOINTMENT DETAILS
+                                        <h1>{{ patients.name }} {{ patients.last_name }}</h1>
                                     </h2>
                                     <div class="space-y-4">
                                         <div>
@@ -41,7 +41,7 @@
                                                             clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input id="datepicker" type="date" v-model="storeAppointments.date"
+                                                <input id="datepicker" type="date" v-model="form.date"
                                                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                     placeholder="Select date">
                                             </div>
@@ -60,7 +60,7 @@
                                                             clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input id="startime" type="time" v-model="storeAppointments.starttime"
+                                                <input id="startime" type="time" v-model="form.starttime"
                                                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                     placeholder="Select date">
                                             </div>
@@ -78,7 +78,7 @@
                                                             clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input id="endtime" type="time" v-model="storeAppointments.endtime"
+                                                <input id="endtime" type="time" v-model="form.endtime"
                                                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                     placeholder="Select date">
                                             </div>
@@ -86,7 +86,7 @@
                                         <div>
                                             <label for="notes"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Notes</label>
-                                            <textarea id="notes" rows="4" v-model="storeAppointments.title"
+                                            <textarea id="notes" rows="4" v-model="form.title"
                                                 class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-purple-500 focus:border-purple-500 dark:text-white dark:placeholder-gray-400"
                                                 placeholder="Enter appointment notes..."></textarea>
                                         </div>
@@ -105,7 +105,7 @@
                                                 d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
                                             </path>
                                         </svg>
-                                        DOCTOR & PATIENT
+                                        DOCTOR
                                     </h2>
 
                                     <div class="space-y-6">
@@ -113,7 +113,7 @@
                                             <label for="doctor-select"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
                                                 Doctor</label>
-                                            <select id="doctor-select" v-model="storeAppointments.doctor_id"
+                                            <select id="doctor-select" v-model="form.doctor_id"
                                                 class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 dark:text-white">
                                                 <option disabled value="">Select a doctor</option>
                                                 <option v-for="doctor in doctors" :key="doctor.id" :value="doctor.id">
@@ -147,46 +147,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div>
-                                            <label for="patient-select"
-                                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
-                                                Patient</label>
-                                            <select id="patient-select" v-model="storeAppointments.patient_id"
-                                                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 dark:text-white">
-                                                <option disabled value="">Select a patient</option>
-                                                <option v-for="patient in patients" :key="patient.id"
-                                                    :value="patient.id">
-                                                    {{ patient.name }} {{ patient.last_name }}
-                                                </option>
-                                            </select>
-
-                                            <div v-if="selectedPatient"
-                                                class="mt-3 bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-100 dark:border-purple-800">
-                                                <div class="flex items-center space-x-3">
-                                                    <div class="flex-shrink-0">
-                                                        <div
-                                                            class="h-10 w-10 rounded-full bg-purple-100 dark:bg-purple-800 flex items-center justify-center">
-                                                            <svg class="h-6 w-6 text-purple-600 dark:text-purple-400"
-                                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2"
-                                                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-                                                                </path>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <h4
-                                                            class="text-sm font-semibold text-purple-800 dark:text-purple-200">
-                                                            {{ selectedPatient.name }} {{ selectedPatient.last_name }}
-                                                        </h4>
-                                                        <p class="text-xs text-purple-600 dark:text-purple-400">DOB: {{
-                                                            selectedPatient.date_of_birth || 'Not specified' }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +170,7 @@
                                             <label for="drug-select"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
                                                 Medication</label>
-                                            <select id="drug-select" v-model="storeAppointments.drug_id"
+                                            <select id="drug-select" v-model="form.drug_id"
                                                 class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-green-500 focus:border-green-500 dark:text-white">
                                                 <option disabled value="">Select a medication</option>
                                                 <option v-for="drug in drugs" :key="drug.id" :value="drug.id">
@@ -219,15 +179,15 @@
                                             </select>
                                         </div>
 
-                                        <div v-if="selectedDrug"
+                                        <div v-if="form"
                                             class="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-100 dark:border-green-800">
                                             <div class="space-y-3">
                                                 <div>
                                                     <h4
                                                         class="text-sm font-semibold text-green-800 dark:text-green-200">
-                                                        {{ selectedDrug.name }}</h4>
+                                                        {{ form.name }}</h4>
                                                     <p class="text-xs text-green-600 dark:text-green-400">Description:
-                                                        {{ selectedDrug.description || 'Not specified' }}</p>
+                                                        {{ form.description || 'Not specified' }}</p>
                                                 </div>
 
                                                 <div class="grid grid-cols-2 gap-2 text-xs">
@@ -235,19 +195,19 @@
                                                         <span
                                                             class="font-medium text-green-700 dark:text-green-300">Frequency:</span>
                                                         <span class="text-green-600 dark:text-green-400 ml-1">{{
-                                                            selectedDrug.frequency || 'N/A' }}</span>
+                                                            form.frequency || 'N/A' }}</span>
                                                     </div>
                                                     <div>
                                                         <span
                                                             class="font-medium text-green-700 dark:text-green-300">Duration:</span>
                                                         <span class="text-green-600 dark:text-green-400 ml-1">{{
-                                                            selectedDrug.duration || 'N/A' }}</span>
+                                                            form.duration || 'N/A' }}</span>
                                                     </div>
                                                     <div>
                                                         <span
                                                             class="font-medium text-green-700 dark:text-green-300">Route:</span>
                                                         <span class="text-green-600 dark:text-green-400 ml-1">{{
-                                                            selectedDrug.route || 'N/A' }}</span>
+                                                            form.route || 'N/A' }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -291,12 +251,12 @@ export default {
     },
     data() {
         return {
-            storeAppointments: {
+            form: {
                 title: '',
                 date: '',
                 starttime: '',
                 endtime: '',
-                patient_id: '',
+                patient_id: this.patients.id,
                 drug_id: '',
                 doctor_id: '',
                 active: true,
@@ -304,27 +264,11 @@ export default {
             },
         }
     },
-    computed: {
-        selectedDoctor() {
-            // console.log('Buscando ID Doctor: ', this.storeAppointments.doctor_id);
-            return this.doctors.find(doctor => doctor.id === this.storeAppointments.doctor_id) || {};
-        },
-        selectedPatient() {
-            // console.log('Buscando ID Patient: ', this.storeAppointments.patient_id);
-            return this.patients.find(patient => patient.id === this.storeAppointments.patient_id) || {};
-        },
-        selectedDrug() {
-            // console.log('Buscando ID Drug: ', this.storeAppointments.drug_id);
-            return this.drugs.find(drug => drug.id === this.storeAppointments.drug_id) || {};
-        },
-    },
     methods: {
-        storeAppointment() {
-            console.log('Enviando: ', this.storeAppointments);
-            this.storeAppointments.date = this.formatDate(this.storeAppointments.date);
-            // this.storeAppointments.starttime = this.formatTime(this.storeAppointments.starttime);
-            // this.storeAppointments.endtime = this.formatTime(this.storeAppointments.endtime);
-            this.$inertia.post(route('appointments.store'), this.storeAppointments, {
+        submit() {
+            console.log('Enviando: ', this.form);
+            this.form.date = this.formatDate(this.form.date);
+            this.$inertia.post(route('appointments.store'), this.form, {
                 onSuccess: () => {
                     this.$emit('appointmentCreated');
                 },
@@ -335,11 +279,11 @@ export default {
         },
         formatDate(date) {
             const d = new Date(date);
-            return d.toISOString().split('T')[0]; // "YYYY-MM-DD"
+            return d.toISOString().split('T')[0];
         },
         formatTime(time) {
             const d = new Date(time);
-            return d.toTimeString().split(' ')[0]; // "HH:MM:SS"
+            return d.toTimeString().split(' ')[0];
         },
     },
     components: {

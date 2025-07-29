@@ -67,12 +67,9 @@ class DrugController extends Controller
     public function edit(string $id)
     {
         $Drug = Drug::findOrFail($id);
-        return Inertia::render('Drug/edit', ['editdrugs' => $Drug]);
+        return Inertia::render('Drug/edit', ['Drugs' => $Drug]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
