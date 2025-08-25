@@ -110,7 +110,7 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <div class="flex justify-end space-x-3">
-                                                <Link 
+                                                <button @click="openModal(medicalhistory)"
                                                     class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 transition-colors duration-200"
                                                     title="Ver detalles">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
@@ -120,7 +120,7 @@
                                                         d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                         clip-rule="evenodd" />
                                                 </svg>
-                                                </Link>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
@@ -128,10 +128,13 @@
                             </table>
                         </div>
                     </div>
+                    <div>
+                        hello
+                    </div>
                 </div>
             </div>
         </template>
-    </AuthenticatedLayout>  
+    </AuthenticatedLayout>
 </template>
 
 <script>
@@ -173,6 +176,13 @@ export default {
         formatDate(date) {
             const d = new Date(date);
             return d.toISOString().split('T')[0];
+        },
+        openModal() {
+            this.medicalhistories = { ...medicalhistory };
+            this.infoModal = true;
+        },
+        closeModal() {
+            this.infoModal = false;
         },
     },
 }
