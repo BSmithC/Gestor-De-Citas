@@ -23,14 +23,22 @@
                         class="backdrop-blur-lg bg-white/80 dark:bg-gray-800/80 rounded-2xl shadow-lg p-4 mb-6 border border-white/20 dark:border-gray-700/50">
                         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                             <Link :href="route('bills.create')"
+<<<<<<< HEAD
                                 class="flex items-center gap-2 px-5 py-3 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl hover:from-emerald-600 hover:to-teal-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 shadow-lg transition-all transform hover:scale-[1.02]">
+=======
+                                class="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-200 shadow-lg transition-all transform hover:scale-105">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                     clip-rule="evenodd" />
                             </svg>
+<<<<<<< HEAD
                             CREATE NEW BILL
+=======
+                            Nuevo Paciente
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             </Link>
 
                             <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
@@ -89,7 +97,11 @@
                                 </thead>
                                 <tbody
                                     class="bg-white/50 dark:bg-gray-800/50 divide-y divide-gray-200 dark:divide-gray-700">
+<<<<<<< HEAD
                                     <tr v-for="bill in bills" :key="bill.id"
+=======
+                                    <tr v-for="bill in bills.data" :key="bill.id"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         class="hover:bg-gray-50/70 dark:hover:bg-gray-700/70 transition-colors">
                                         <td
                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
@@ -131,7 +143,11 @@
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<<<<<<< HEAD
                                             <button @click="openModal(bill)"
+=======
+                                            <Link :href="route('bills.show', bill.id)"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                                 class="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
@@ -141,7 +157,11 @@
                                                         clip-rule="evenodd" />
                                                 </svg>
                                                 Details
+<<<<<<< HEAD
                                             </button>
+=======
+                                            </Link>
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         </td>
                                     </tr>
                                 </tbody>
@@ -149,6 +169,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <!-- Bill Detail Modal -->
                 <div v-if="infoModal"
@@ -441,6 +462,9 @@
                         </div>
                     </div>
                 </div>
+=======
+                <Pagination :pagination="bills" :filters="form" />
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             </div>
         </template>
     </AuthenticatedLayout>
@@ -453,6 +477,10 @@ import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
+<<<<<<< HEAD
+=======
+import Pagination from '@/Components/Pagination.vue'
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 
 export default {
     props: {
@@ -461,7 +489,10 @@ export default {
     },
     data() {
         return {
+<<<<<<< HEAD
             infoModal: false,
+=======
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             form: {
                 id: null,
                 drugs_id: '',
@@ -486,6 +517,7 @@ export default {
                 replace: true
             });
         },
+<<<<<<< HEAD
         openModal(bill) {
             this.form = { ...bill };
             this.infoModal = true;
@@ -493,6 +525,15 @@ export default {
         closeModal() {
             this.infoModal = false;
         },
+=======
+        // openModal(bill) {
+        //     this.form = { ...bill };
+        //     this.infoModal = true;
+        // },
+        // closeModal() {
+        //     this.infoModal = false;
+        // },
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     },
 
     components: {
@@ -501,7 +542,12 @@ export default {
         Link,
         LastDays,
         ref,
+<<<<<<< HEAD
         router
+=======
+        router,
+        Pagination
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     },
 };
 </script>

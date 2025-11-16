@@ -20,16 +20,24 @@
                 <div class="max-w-7xl mx-auto">
                     <!-- Action Bar with Glass Morphism Effect -->
                     <div
+<<<<<<< HEAD
                         class="backdrop-blur-lg bg-white/80 dark:bg-gray-800/80 rounded-2xl shadow-lg p-4 mb-6 border border-white/20 dark:border-gray-700/50">
                         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                             <Link :href="route('drugs.create')"
                                 class="flex items-center gap-2 px-5 py-3 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl hover:from-emerald-600 hover:to-teal-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 shadow-lg transition-all transform hover:scale-[1.02]">
+=======
+                        class=" bg-white/80 dark:bg-gray-800/80 rounded-2xl shadow-lg p-4 mb-6 border border-white/20 dark:border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <Link :href="route('drugs.create')"
+                                class="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-200 shadow-lg transition-all transform hover:scale-105">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                     clip-rule="evenodd" />
                             </svg>
+<<<<<<< HEAD
                             ADD NEW MEDICATION
                             </Link>
 
@@ -37,6 +45,15 @@
                                 <LastDays v-model="filters.lastDays" @change="submit" class="w-full md:w-auto" />
 
                                 <div class="relative w-full md:w-64">
+=======
+                            Nuevo Paciente
+                            </Link>
+
+                            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                                <LastDays v-model="filters.lastDays" @change="submit" class="w-full sm:w-auto" />
+
+                                <div class="relative w-full sm:w-64">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <svg class="w-5 h-5 text-gray-400" aria-hidden="true" fill="currentColor"
                                             viewBox="0 0 20 20">
@@ -46,8 +63,13 @@
                                         </svg>
                                     </div>
                                     <input @input="submit()" v-model="filters.search" id="table-search"
+<<<<<<< HEAD
                                         class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-white/50 dark:bg-gray-700/50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500 transition-all"
                                         placeholder="Search medications...">
+=======
+                                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500 transition-all"
+                                        placeholder="Buscar pacientes...">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                 </div>
                             </div>
                         </div>
@@ -93,7 +115,11 @@
                                 </thead>
                                 <tbody
                                     class="bg-white/50 dark:bg-gray-800/50 divide-y divide-gray-200 dark:divide-gray-700">
+<<<<<<< HEAD
                                     <tr v-for="drug in drugs" :key="drug.id"
+=======
+                                    <tr v-for="drug in drugs.data" :key="drug.id"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         class="hover:bg-gray-50/70 dark:hover:bg-gray-700/70 transition-colors">
                                         <td
                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
@@ -325,7 +351,12 @@
                             </button>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
+=======
+                </div>a
+                <Pagination :pagination="drugs" :filters="form" />
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             </div>
         </template>
     </AuthenticatedLayout>
@@ -338,6 +369,10 @@ import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
+<<<<<<< HEAD
+=======
+import Pagination from '@/Components/Pagination.vue'
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 
 export default {
     props: {
@@ -387,7 +422,12 @@ export default {
         LastDays,
         Link,
         ref, 
+<<<<<<< HEAD
         router
+=======
+        router,
+        Pagination
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     },
 };
 </script>

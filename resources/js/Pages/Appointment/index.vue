@@ -55,8 +55,13 @@
                 </div>
 
                 <!-- Appointments Grid -->
+<<<<<<< HEAD
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div v-for="appointment in appointments" :key="appointment.id"
+=======
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                    <div v-for="appointment in appointments.data" :key="appointment.id"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                         class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
                         <!-- Appointment Header -->
                         <div
@@ -140,7 +145,11 @@
                             <!-- Actions -->
                             <div
                                 class="mt-6 flex justify-between items-center pt-4 border-t border-gray-200 dark:border-gray-700">
+<<<<<<< HEAD
                                 <button @click="openModal(appointment)"
+=======
+                                <Link :href="route('appointments.show', appointment.id)"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                     class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
@@ -150,6 +159,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                     Details
+<<<<<<< HEAD
                                 </button>
 
                                 <!-- Empty State -->
@@ -239,22 +249,36 @@
                                         </div>
                                     </div>
                                 </div>
+=======
+                                </Link>
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             </div>
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+                <Pagination :pagination="appointments" :value="form" />
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             </div>
         </template>
     </AuthenticatedLayout>
 </template>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
+<<<<<<< HEAD
+=======
+import Pagination from '@/Components/Pagination.vue'
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 
 export default {
     props: {
@@ -278,6 +302,7 @@ export default {
             replace: true
         });
     },
+<<<<<<< HEAD
     openModal(appointment) {
         this.form = { ...appointment };
         this.infoModal = true;
@@ -288,6 +313,17 @@ export default {
     data() {
         return {
             infoModal: false,
+=======
+    // openModal(appointment) {
+    //     this.form = { ...appointment };
+    //     this.infoModal = true;
+    // },
+    // closeModal() {
+    //     this.infoModal = false;
+    // },
+    data() {
+        return {
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             form: {
                 id: '',
                 title: '',
@@ -299,7 +335,12 @@ export default {
                 active: true,
                 search: this.filters.search || '',
                 lastDays: this.filters.lastDays || '1',
+<<<<<<< HEAD
             }
+=======
+            },
+            infoModal: false,
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         };
     },
     components: {
@@ -308,7 +349,12 @@ export default {
         Link,
         LastDays,
         ref,
+<<<<<<< HEAD
         router
+=======
+        router,
+        Pagination
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     }
 };
 </script>

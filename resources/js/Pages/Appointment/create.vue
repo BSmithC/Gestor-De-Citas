@@ -13,7 +13,11 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
                     <form @submit.prevent="submit" class="p-6 space-y-8">
                         <!-- Three Column Layout -->
+<<<<<<< HEAD
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+=======
+                        <div class="grid grid-cols-2 lg:grid-cols-2 gap-8">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             <!-- Left Column - Date and Notes -->
                             <div class="space-y-6">
                                 <div>
@@ -25,9 +29,77 @@
                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                                             </path>
                                         </svg>
+<<<<<<< HEAD
                                         <h1>{{ patients.name }} {{ patients.last_name }}</h1>
                                     </h2>
                                     <div class="space-y-4">
+=======
+                                    </h2>
+
+                            <!-- Middle Column - Doctor and Patient -->
+                            <div class="space-y-6">
+                                <div>
+                                    <h2
+                                        class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
+                                        <svg class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        DOCTOR
+                                    </h2>
+
+                                    <div class="space-y-6">
+                                        <div>
+                                            <label for="doctor-select"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
+                                                Doctor</label>
+                                            <select id="doctor-select" v-model="form.doctor_id"
+                                                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 dark:text-white">
+                                                <option disabled value="">Select a doctor</option>
+                                                <option v-for="doctor in doctors" :key="doctor.id" :value="doctor.id">
+                                                    Dr. {{ doctor.name }} {{ doctor.last_name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Middle Column - Doctor and Patient -->
+                            <div class="space-y-6">
+                                <div>
+                                    <h2
+                                        class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
+                                        <svg class="w-5 h-5 mr-2 text-green-600 dark:text-green-400" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        Patient
+                                    </h2>
+
+                                    <div class="space-y-6">
+                                        <div>
+                                            <label for="doctor-select"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select
+                                                patients</label>
+                                            <select id="doctor-select" v-model="form.patient_id"
+                                                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 dark:text-white">
+                                                <option disabled value="">Select a doctor</option>
+                                                <option v-for="patient in patients" :key="patient.id" :value="patient.id">
+                                                    Dr. {{ patient.name }} {{ patient.last_name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                                                                <div class="space-y-4">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         <div>
                                             <label for="datepicker"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Date</label>
@@ -91,6 +163,7 @@
                                                 placeholder="Enter appointment notes..."></textarea>
                                         </div>
                                     </div>
+<<<<<<< HEAD
                                 </div>
                             </div>
 
@@ -224,6 +297,16 @@
                                 Cancel
                             </button>
                             <button type="submit"
+=======
+                        </div>
+                        <!-- Form Actions -->
+                        <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+                            <button type="button"
+                                class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800 transition-colors">
+                                Cancel
+                            </button>
+                            <button @click="submit"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                 class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-colors">
                                 Create Appointment
                             </button>
@@ -249,6 +332,19 @@ export default {
         doctors: Object,
         drugs: Object,
     },
+<<<<<<< HEAD
+=======
+        components: {
+        Head,
+        AuthenticatedLayout,
+        LastDays,
+        Link,
+        computed,
+        router,
+        ref,
+        onMounted
+    },
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     data() {
         return {
             form: {
@@ -256,9 +352,14 @@ export default {
                 date: '',
                 starttime: '',
                 endtime: '',
+<<<<<<< HEAD
                 patient_id: this.patients.id,
                 drug_id: '',
                 doctor_id: '',
+=======
+                patient_id: this.patients,
+                doctor_id: this.doctor_id,
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                 active: true,
                 attended: false,
             },
@@ -266,7 +367,10 @@ export default {
     },
     methods: {
         submit() {
+<<<<<<< HEAD
             console.log('Enviando: ', this.form);
+=======
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             this.form.date = this.formatDate(this.form.date);
             this.$inertia.post(route('appointments.store'), this.form, {
                 onSuccess: () => {
@@ -285,6 +389,7 @@ export default {
             const d = new Date(time);
             return d.toTimeString().split(' ')[0];
         },
+<<<<<<< HEAD
     },
     components: {
         Head,
@@ -295,6 +400,8 @@ export default {
         router,
         ref,
         onMounted
+=======
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     }
 };
 </script>

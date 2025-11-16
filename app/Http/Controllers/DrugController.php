@@ -37,7 +37,11 @@ class DrugController extends Controller
                 $query->where('created_at', '>=', $dateFrom);
             }
         }
+<<<<<<< HEAD
         $drugs = $query->get();
+=======
+        $drugs = $query->paginate(10);
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         return Inertia::render('Drug/index', ['drugs' => $drugs, 'filters' => [
                 'search' => $search,'lastDays' => $lastDays],]);
     }

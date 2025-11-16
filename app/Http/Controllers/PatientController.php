@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\appointment;
 use App\Models\Patient;
+=======
+use App\Models\Appointment;
+use App\Models\Patient;
+use App\Model\Bill;
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Database\Eloquent\Builder;
@@ -39,7 +45,11 @@ class PatientController extends Controller
                 $query->where('created_at', '>=', $dateFrom);
             }
         }
+<<<<<<< HEAD
         $patients = $query->with('medicalhistory')->get();
+=======
+        $patients = $query->with('Appointment')->paginate(10);
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         return Inertia::render('Patient/index', ['patients' => $patients, 'filters' => [
         'search' => $search,'lastDays' => $lastDays],]);
     }
@@ -77,17 +87,29 @@ class PatientController extends Controller
         return redirect()->route('patients.index')->with('success', 'Paciente creado correctamente.');
     }
 
+<<<<<<< HEAD
     public function show()
     {
         // $patient = Patient::findOrFail($id);
         // return Inertia::render('Patient/show', ['showpatients' => $patient]);
         return Inertia::render('Patient/show');
+=======
+    public function show(string $id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->load('appointment', 'bill');
+        return Inertia::render('Patient/show', ['patients' => $patient,]);
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     }
 
     public function edit(string $id)
     {
         $patient = Patient::findOrFail($id);
+<<<<<<< HEAD
         return Inertia::render('Patient/edit', ['Patients' => $patient]);
+=======
+        return Inertia::render('Patient/edit', ['patients' => $patient]);
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         
     }
 

@@ -84,7 +84,11 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+<<<<<<< HEAD
                                     <tr v-for="patient in patients" :key="patient.id"
+=======
+                                    <tr v-for="patient in patients.data" :key="patient.id"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                                         <td
                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
@@ -133,7 +137,11 @@
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<<<<<<< HEAD
                                             <button @click="openModal(patient)"
+=======
+                                            <Link :href="route('patients.show', patient.id)"
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                                 class="flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
@@ -143,7 +151,11 @@
                                                         clip-rule="evenodd" />
                                                 </svg>
                                                 Ver
+<<<<<<< HEAD
                                             </button>
+=======
+                                            </Link>
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         </td>
                                     </tr>
                                 </tbody>
@@ -151,6 +163,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <!-- Patient Detail Modal -->
                 <div v-if="infoModal"
@@ -463,6 +476,9 @@
                         </div>
                     </div>
                 </div>
+=======
+                 <Pagination :pagination="patients" :filters="form" />
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             </div>
         </template>
     </AuthenticatedLayout>
@@ -475,6 +491,10 @@ import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
+<<<<<<< HEAD
+=======
+import Pagination from '@/Components/Pagination.vue'
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 
 export default {
     props: {
@@ -484,11 +504,35 @@ export default {
     data() {
         return {
             form: {
+<<<<<<< HEAD
                 search: this.filters.search || '',
             },
             infoModal: false,
             Patient: {},
             lastDays: this.filters.lastDays || '1',
+=======
+                DNI: this.patients.DNI || '',
+                name: this.patients.name || '',
+                sur_name: this.patients.sur_name || '',
+                last_name: this.patients.last_name || '',
+                second_sur_name: this.patients.second_sur_name || '',
+                date_of_birth: this.patients.date_of_birth || '',
+                phone_number: this.patients.phone_number || '',
+                nacionality: this.patients.nacionality || '',
+                address: this.patients.address || '',
+                gender: this.patients.gender || '',
+                sex: this.patients.sex || '',
+                marital_status: this.patients.marital_status || '',
+                ocupation: this.patients.ocupation || '',
+                place_of_birth: this.patients.place_of_birth || '',
+                blood_type: this.patients.blood_type || '',
+                insurance: this.patients.insurance || '',
+                status: this.patients.status ?? 'activo',
+                email: this.patients.email || '',
+                search: this.filters.search || '',
+            },
+            lastDays: this.filters.lastDays ?? '1',
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         };
     },
     methods: {
@@ -501,6 +545,7 @@ export default {
                 replace: true
             });
         },
+<<<<<<< HEAD
         openModal(patient) {
             this.Patient = { ...patient };
             this.infoModal = true;
@@ -508,6 +553,8 @@ export default {
         closeModal() {
             this.infoModal = false;
         },
+=======
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     },
     components: {
         Head,
@@ -515,7 +562,12 @@ export default {
         LastDays,
         Link,
         ref,
+<<<<<<< HEAD
         router
+=======
+        router,
+        Pagination
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     }
 };
 </script>

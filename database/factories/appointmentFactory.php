@@ -2,7 +2,11 @@
 
 namespace Database\Factories;
 
+<<<<<<< HEAD
 use App\Models\appointment;
+=======
+use App\Models\Appointment;
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

@@ -16,7 +16,11 @@
                         </div>
 
                         <!-- Three Column Grid -->
+<<<<<<< HEAD
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+=======
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             <!-- Patient Info Card -->
                             <div
                                 class="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm border border-gray-200 dark:border-gray-600">
@@ -71,6 +75,7 @@
                                     </option>
                                 </select>
                             </div>
+<<<<<<< HEAD
 
                             <!-- Drug Info Card -->
                             <div
@@ -155,6 +160,9 @@
                             </div>
                         </div>
 
+=======
+                        </div>
+>>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                         <!-- Bill Items Table -->
                         <div
                             class="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm border border-gray-200 dark:border-gray-600">
