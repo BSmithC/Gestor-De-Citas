@@ -1,5 +1,4 @@
 <template>
-
     <Head title="Edit Appointment" />
     <AuthenticatedLayout>
         <template #header>
