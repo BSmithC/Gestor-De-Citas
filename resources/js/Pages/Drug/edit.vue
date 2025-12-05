@@ -90,10 +90,10 @@
 
                             <!-- Form Actions -->
                             <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700">
-                                <button type="button" @click="closeModal" 
+                                <Link :href="route('drugs.index')" 
                                     class="px-6 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:ring-2 focus:outline-none focus:ring-gray-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:border-gray-700 dark:focus:ring-gray-700 transition-colors">
                                     Cancel
-                                </button>
+                                </Link>
                                 <button type="submit" 
                                     class="px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg hover:from-purple-700 hover:to-indigo-700 focus:ring-2 focus:outline-none focus:ring-purple-300 shadow-lg transition-all transform hover:scale-[1.02]">
                                     <div class="flex items-center gap-2">

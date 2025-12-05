@@ -164,7 +164,7 @@
                                             {{ drug.duration || 'N/A' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <button @click="openModal(drug)"
+                                            <Link :href="route('drugs.show',drug.id )"
                                                 class="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
@@ -173,8 +173,8 @@
                                                         d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                         clip-rule="evenodd" />
                                                 </svg>
-                                                Details
-                                            </button>
+                                                Ver
+                                            </Link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -182,6 +182,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <!-- Medication Detail Modal -->
                 <div v-if="infoModal"
@@ -355,6 +356,8 @@
                 </div>
 =======
                 </div>a
+=======
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
                 <Pagination :pagination="drugs" :filters="form" />
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             </div>
@@ -407,14 +410,14 @@ export default {
                 replace: true
             });
         },
-        openModal(drug) {
-            this.form = { ...drug };
-            this.infoModal = true;
-        },
+        // openModal(drug) {
+        //     this.form = { ...drug };
+        //     this.infoModal = true;
+        // },
 
-        closeModal() {
-            this.infoModal = false;
-        },
+        // closeModal() {
+        //     this.infoModal = false;
+        // },
     },
     components: {
         Head,

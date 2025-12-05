@@ -161,7 +161,48 @@
                                             Facturas Del Paciente
                                         </h3>
                                     </div>
+                                <div v-if="patients.bill.length" class="p-4"> 
+                                    <div>
+                                        <label
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Notas De La Ultima Bill</label>
                                     <div class="p-4">
+                                        <dl class="space-y-4">
+                                            <div class="grid grid-cols-3 gap-4">
+                                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Sub Total:
+                                                </dt>
+                                                <dd
+                                                    class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
+                                                    {{ patients.bill[patients.bill.length -1].sub_total || 'Not available' }}
+                                                </dd>
+                                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                                                    Total:</dt>
+                                                <dd
+                                                    class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
+                                                    {{ patients.bill[patients.bill.length -1].total || 'Not available' }}
+                                                </dd>
+                                                 <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Payment_Type:
+                                                </dt>
+                                                <dd
+                                                    class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
+                                                    {{ patients.bill[patients.bill.length -1].payment_type || 'Not available' }}
+                                                </dd>
+                                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                                                    Total:</dt>
+                                                <dd
+                                                    class="col-span-2 text-sm text-gray-900 dark:text-white font-medium">
+                                                    {{ patients.bill[patients.bill.length -1].total || 'Not available' }}
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                        <div>
+                                            <button @click="openModal(patients.bill)">
+                                                Mas Detalladas 
+                                            </button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div v-else class="p-4">
                                         <div class="text-center py-8 text-gray-500 dark:text-gray-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2"
                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -172,7 +213,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Appointments Card -->
                                 <div
                                     class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-600">
@@ -259,6 +299,7 @@
 export default{
     props: {
         patients: Object,
+        billdetails: Object,
     },
     components: {
         AuthenticatedLayout,
@@ -271,6 +312,7 @@ export default{
     
     data(){
         return {
+            infoModal: false,
             form: {
             }
         };
@@ -285,6 +327,14 @@ export default{
                 replace: true
             });
         },
+        openModal(patients){
+            this.form = { ...patients};
+            this.infoModal = true;
+        },
+        closeModal(patients){
+            this.infoModal = false;
+        },
+
     },
 }
 

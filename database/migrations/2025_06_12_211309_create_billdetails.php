@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bill_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bills_id');
+            $table->foreignId('patients_id');
             $table->text('service');
             $table->time('hour');
             $table->decimal('price');

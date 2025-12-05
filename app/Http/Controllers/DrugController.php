@@ -63,15 +63,16 @@ class DrugController extends Controller
 
         return redirect()->route('drugs.index')->with('success', 'Medicamento creado correctamente.');
     }
-    public function show()
+    public function show(string $id)
     {
-        return Inertia::render('Drug/show');
+        $drugs = Drug::findOrFail($id);
+        return Inertia::render('Drug/show', ['drugs' => $drugs]);
     }
 
     public function edit(string $id)
     {
-        $Drug = Drug::findOrFail($id);
-        return Inertia::render('Drug/edit', ['Drugs' => $Drug]);
+        $drugs = Drug::findOrFail($id);
+        return Inertia::render('Drug/edit', ['drugs' => $drugs]);
     }
 
     public function update(Request $request, string $id)
@@ -83,8 +84,8 @@ class DrugController extends Controller
         'frequency' => 'required|string|max:255',
         'duration' => 'required|string|max:255',
         ]);
-        $Drug = Drug::findOrFail($id);
-        $Drug->update($validated);
+        $drugs = Drug::findOrFail($id);
+        $drugs->update($validated);
         return redirect()->route('drugs.index')->with('success', 'Medicamento actualizado correctamente.');
     }
 

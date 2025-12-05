@@ -9,7 +9,11 @@ use App\Models\Patient;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Model\Bill;
+<<<<<<< HEAD
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
+=======
+use App\Model\BillDetail;
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,6 +27,7 @@ class PatientController extends Controller
         $search = $request->input('search');
         $query = Patient::query()->select('patients.*');
         $lastDays = $request->input('lastDays', '30');
+        
 
         if ($search) {
             $query->where(function (Builder $q) use ($search) {
@@ -98,8 +103,12 @@ class PatientController extends Controller
     {
         $patient = Patient::findOrFail($id);
         $patient->load('appointment', 'bill');
+<<<<<<< HEAD
         return Inertia::render('Patient/show', ['patients' => $patient,]);
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
+=======
+        return Inertia::render('Patient/show', ['patients' => $patient]);
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
     }
 
     public function edit(string $id)

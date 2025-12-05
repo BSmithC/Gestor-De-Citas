@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         \App\Models\Patient::factory(10)->create();
         // $this->call(PatientSeeder::class);
 
@@ -31,19 +32,26 @@ class DatabaseSeeder extends Seeder
         \App\Models\MedicalHistory::factory(10)->create();
 =======
         \App\Models\Patient::factory(50)->create();
+=======
+        \App\Models\Patient::factory(100)->create();
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
         // $this->call(PatientSeeder::class);
 
-        \App\Models\Drug::factory(50)->create();
+        \App\Models\Drug::factory(100)->create();
         // $this->call(DrugSeeder::class);
         
-        \App\Models\Bill::factory(50)->create();
+        \App\Models\Bill::factory(100)->create();
 
-        \App\Models\BillDetail::factory(50)->create();
+        \App\Models\BillDetail::factory(100)->create();
         
-        \App\Models\User::factory(50)->create();
+        \App\Models\User::factory(100)->create();
 
+<<<<<<< HEAD
         \App\Models\Appointment::factory(50)->create();
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
+=======
+        \App\Models\Appointment::factory(100)->create();
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
 
         \App\Models\User::factory()->create([
             'name' => 'Test User',

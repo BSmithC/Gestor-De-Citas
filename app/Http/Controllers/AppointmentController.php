@@ -133,14 +133,18 @@ class AppointmentController extends Controller
     public function update(Request $request, string $id)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $appointment = appointment::findOrFail($id);
 =======
+=======
+        Log::info($request);
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
         $appointment = Appointment::findOrFail($id);
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'doctor_id' => 'required|exists:users,id',
-            'drug_id' => 'required|exists:users,id',
+            // 'drug_id' => 'required|exists:users,id',
             // 'patient_id' => 'required|exists:patients,id',
             'attended' => 'required|boolean',
             'date' => 'required|date',

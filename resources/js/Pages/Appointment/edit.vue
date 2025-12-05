@@ -57,32 +57,6 @@
                                                     Dr. {{ doctor.name }} {{ doctor.last_name }}
                                                 </option>
                                             </select>
-
-                                            <div
-                                                class="mt-3 bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-100 dark:border-blue-800">
-                                                <div class="flex items-center space-x-3">
-                                                    <div class="flex-shrink-0">
-                                                        <div
-                                                            class="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-800 flex items-center justify-center">
-                                                            <svg class="h-6 w-6 text-blue-600 dark:text-blue-400"
-                                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2"
-                                                                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                                </path>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <h4
-                                                            class="text-sm font-semibold text-blue-800 dark:text-blue-200">
-                                                            Dr. {{ form.doctor_id.name }} {{ form.doctor_id.last_name }}
-                                                        </h4>
-                                                        <p class="text-xs text-blue-600 dark:text-blue-400">Specialty:
-                                                            {{ form.doctor_id.specialty || 'General' }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -155,6 +129,7 @@
                                                 placeholder="Enter appointment notes..."></textarea>
                                         </div>
                                     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
                                 </div>
                             </div>
@@ -283,6 +258,8 @@
 =======
 
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
+=======
+>>>>>>> 7800c40 (Modificaciones de Show, index, controller, etc...)
                         </div>
 
                         <!-- Form Actions -->
@@ -312,8 +289,8 @@ import LastDays from '@/Components/LastDays.vue';
 
 export default {
     props: {
+        appointments: Object,
         doctors: Object,
-        drugs: Object,
         appointment: Object,
     },
     data() {
@@ -323,8 +300,6 @@ export default {
                 date: '',
                 starttime: '',
                 endtime: '',
-                // patient_id: '',
-                drug_id: '',
                 doctor_id: '',
                 active: true,
                 attended: true,
@@ -335,7 +310,7 @@ export default {
         submit() {
             console.log('Enviando: ', this.form);
             this.form.date = this.formatDate(this.form.date);
-            this.$inertia.put(route('appointments.update', this.appointment), this.form, {
+            this.$inertia.put(route('appointments.update', this.appointments), this.form, {
                 onSuccess: () => {
                     this.$emit('appointmentUpdated');
                 },

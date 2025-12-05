@@ -1,9 +1,3 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-import CardStats from '@/Components/CardStats.vue';
-</script>
-
 <template>
     <Head title="Dashboard - Gestión Clínica" />
 
@@ -38,7 +32,7 @@ import CardStats from '@/Components/CardStats.vue';
             <!-- Estadísticas principales mejoradas -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
                 <CardStats
-                    statSubtitle="Pacientes Activos"
+                    statSubtitle="Pacientes"
                     statTitle="1,248"
                     statArrow="up"
                     statPercent="12.5"
@@ -145,11 +139,11 @@ import CardStats from '@/Components/CardStats.vue';
                                     Crítico
                                 </span>
                             </div>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Historial Médico</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Registros clínicos completos, diagnósticos y tratamientos.</p>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Medicamentos</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Registros De medicamentos</p>
                             <div class="flex justify-between items-center text-sm">
                                 <span class="text-gray-500 dark:text-gray-400">3,456 registros</span>
-                                <a :href="route('medicalhistories.index')" class="font-medium text-teal-600 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-300 flex items-center">
+                                <a :href="route('drugs.index')" class="font-medium text-teal-600 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-300 flex items-center">
                                     Acceder
                                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -332,6 +326,35 @@ import CardStats from '@/Components/CardStats.vue';
         </template>
     </AuthenticatedLayout>
 </template>
+
+<script>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head } from '@inertiajs/vue3';
+import CardStats from '@/Components/CardStats.vue';
+
+export default {
+    props: {
+        patients: Object(),
+        doctors: Object(),
+        appointments: Object(),
+    },
+    components: {
+        AuthenticatedLayout,
+        Head,
+        CardStats,
+    },
+    data(){
+        return{
+            data: {
+
+            }
+        }
+    },
+    methods: {
+
+    },
+}
+</script>
 
 <style>
 .bg-medical-pattern {

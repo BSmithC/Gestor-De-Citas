@@ -50,4 +50,8 @@ class Patient extends Model
         return $this->hasMany(Appointment::class, 'patient_id', 'id');
 >>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     }
+    public function BillDetails()
+    {
+        return $this->hasMany(BillDetail::class, 'patient_id','id');
+    }
 }
