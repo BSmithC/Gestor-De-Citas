@@ -15,12 +15,7 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400">Complete all required fields</p>
                         </div>
 
-                        <!-- Three Column Grid -->
-<<<<<<< HEAD
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-=======
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             <!-- Patient Info Card -->
                             <div
                                 class="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm border border-gray-200 dark:border-gray-600">
@@ -75,94 +70,7 @@
                                     </option>
                                 </select>
                             </div>
-<<<<<<< HEAD
-
-                            <!-- Drug Info Card -->
-                            <div
-                                class="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm border border-gray-200 dark:border-gray-600">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="font-semibold text-lg text-gray-700 dark:text-white">Drug Information
-                                    </h3>
-                                    <div
-                                        class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-green-600 dark:text-green-300" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <select v-model="form.drug_id"
-                                    class="w-full mb-4 bg-green-600 text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center justify-between dark:bg-green-700 dark:hover:bg-green-800 dark:focus:ring-green-900 transition-colors">
-                                    <option disabled value="" class="bg-white text-gray-900">Select Drug</option>
-                                    <option v-for="drug in drugs" :key="drug.id" :value="drug.id"
-                                        class="bg-white text-gray-900">
-                                        {{ drug.name }}
-                                    </option>
-                                </select>
-                            </div>
                         </div>
-
-                        <!-- Payment Type Section -->
-                        <div
-                            class="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm border border-gray-200 dark:border-gray-600">
-                            <h3 class="font-semibold text-lg text-gray-700 dark:text-white mb-4">Payment Type</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <button type="button"
-                                    class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                                            </path>
-                                        </svg>
-                                        <span>Credit Card</span>
-                                    </div>
-                                </button>
-                                <button type="button"
-                                    class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
-                                            </path>
-                                        </svg>
-                                        <span>Cash</span>
-                                    </div>
-                                </button>
-                                <button type="button"
-                                    class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                                        </svg>
-                                        <span>Transfer</span>
-                                    </div>
-                                </button>
-                                <button type="button"
-                                    class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                            </path>
-                                        </svg>
-                                        <span>Other</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-
-=======
-                        </div>
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                         <!-- Bill Items Table -->
                         <div
                             class="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm border border-gray-200 dark:border-gray-600">

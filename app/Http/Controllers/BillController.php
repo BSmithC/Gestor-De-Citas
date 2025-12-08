@@ -39,11 +39,7 @@ class BillController extends Controller
                 $query->where('created_at', '>=', $dateFrom);
             }
         }
-<<<<<<< HEAD
-        $bills = $query->with('drugs', 'patient', 'user', 'BillDetails')->get();
-=======
         $bills = $query->with('drugs', 'patient', 'user', 'BillDetails')->paginate(10);
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         return Inertia::render('Bill/index', ['bills' => $bills, 'filters' => ['search' => $search,
         'lastDays' => $lastDays],]);
     }
@@ -84,11 +80,7 @@ class BillController extends Controller
     {
         $bill = Bill::findOrFail($id);
         $bill->load('drugs', 'patient', 'user', 'BillDetails');
-<<<<<<< HEAD
-        return Inertia::render("Bill/show", ['bills' => $bill,]);
-=======
         return Inertia::render("Bill/show", ['bills' => $bill]);
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
     }
 
     public function edit(string $id)

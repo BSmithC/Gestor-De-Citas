@@ -68,11 +68,7 @@
                                         <thead
                                             class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                             <tr>
-                                                <th scope="col" class="px-6 py-3">#</th>
-<<<<<<< HEAD
-                                                <th scope="col" class="px-6 py-3">Service Description</th>
-=======
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
+                                                <th scope="col" class="px-6 py-3">#</th>        
                                                 <th scope="col" class="px-6 py-3">Duration (hrs)</th>
                                                 <th scope="col" class="px-6 py-3">Price ($)</th>
                                                 <th scope="col" class="px-6 py-3 text-right">Actions</th>
@@ -93,23 +89,11 @@
                                                     {{ index + 1 }}
                                                 </td>
                                                 <td class="px-6 py-4">
-<<<<<<< HEAD
-                                                    <input type="text" v-model="bill.service" :disabled="disable_inputs"
-                                                        class="w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
-                                                </td>
-                                                <td class="px-6 py-4">
-                                                    <input type="number" v-model="bill.hour" :disabled="disable_inputs"
-                                                        class="w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
-                                                </td>
-                                                <td class="px-6 py-4">
-                                                    <input type="number" v-model="bill.price" :disabled="disable_inputs"
-=======
                                                     <input type="number" v-model="bill.hour" 
                                                         class="w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     <input type="number" v-model="bill.price"
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                                         class="w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
                                                 </td>
                                                 <td class="px-6 py-4 text-right">
@@ -123,13 +107,7 @@
                                     </table>
                                 </div>
                             </div>
-
-                            <!-- Professional Selection Section -->
-<<<<<<< HEAD
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-=======
                             <div class="grid grid-cols-1 lg:grid-cols-1 gap-6">
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                 <!-- Doctor Selection Card -->
                                 <div
                                     class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-600">
@@ -180,62 +158,6 @@
                                         </div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-
-                                <!-- Medication Selection Card -->
-                                <div
-                                    class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-600">
-                                    <div
-                                        class="bg-gray-50 dark:bg-gray-600 px-4 py-3 border-b border-gray-200 dark:border-gray-500">
-                                        <h3
-                                            class="text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 text-purple-600 dark:text-purple-400" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1H6v8l4-2 4 2V6z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Prescribed Medication
-                                        </h3>
-                                    </div>
-                                    <div class="p-4">
-                                        <select v-model="form.drug_id"
-                                            class="w-full px-4 py-2.5 mb-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
-                                            <option disabled value="">Select Medication</option>
-                                            <option v-for="drug in drugs" :key="drug.id" :value="drug">
-                                                {{ drug.name }} ({{ drug.route }})
-                                            </option>
-                                        </select>
-                                        <div class="bg-gray-100 dark:bg-gray-600/50 p-4 rounded-lg">
-                                            <div class="grid grid-cols-2 gap-4">
-                                                <div>
-                                                    <p class="text-sm text-gray-500 dark:text-gray-400">Medication</p>
-                                                    <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        form.drug_id.name || 'Not selected' }}</p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-sm text-gray-500 dark:text-gray-400">Administration
-                                                    </p>
-                                                    <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        form.drug_id.route || 'Not specified' }}</p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-sm text-gray-500 dark:text-gray-400">Frequency</p>
-                                                    <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        form.drug_id.frequency || 'Not specified' }}</p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-sm text-gray-500 dark:text-gray-400">Duration</p>
-                                                    <p class="text-sm font-medium text-gray-900 dark:text-white">{{
-                                                        form.drug_id.duration || 'Not specified' }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-=======
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             </div>
 
                             <!-- Payment Summary Section -->
@@ -254,29 +176,6 @@
                                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
                                                 clip-rule="evenodd" />
                                         </svg>
-<<<<<<< HEAD
-                                        Payment Summary
-                                    </h3>
-                                </div>
-                                <div class="p-4">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <div class="bg-gray-50 dark:bg-gray-600 p-4 rounded-lg">
-                                            <label
-                                                class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Payment
-                                                Type</label>
-                                            <select v-model="form.payment_type"
-                                                class="w-full px-4 py-2 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500 transition-all">
-                                                <option value="Cash">Cash</option>
-                                                <option value="Credit Card">Credit Card</option>
-                                                <option value="Insurance">Insurance</option>
-                                                <option value="Bank Transfer">Bank Transfer</option>
-                                            </select>
-                                        </div>
-                                        <div class="bg-gray-50 dark:bg-gray-600 p-4 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">Subtotal</p>
-                                            <p class="text-xl font-semibold text-gray-900 dark:text-white">${{
-                                                form.sub_total || '0.00' }}</p>
-=======
                                         Payment Summary {{}}
                                     </h3>
                                 </div>
@@ -286,18 +185,12 @@
                                             <p class="text-sm text-gray-700 dark:text-gray-300">Subtotal</p>
                                             <p class="text-xl font-semibold text-gray-900 dark:text-white">${{
                                                 bills.sub_total || '0.00' }}</p>
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                         </div>
                                         <div
                                             class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
                                             <p class="text-sm text-purple-600 dark:text-purple-400">Total Amount</p>
                                             <p class="text-2xl font-bold text-purple-700 dark:text-purple-300">${{
-<<<<<<< HEAD
-                                                form.total || '0.00' }}</p>
-=======
-                                                bills.total || '0.00' }}</p>
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
-                                        </div>
+                                                bills.total || '0.00' }}</p>                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -125,18 +125,10 @@ export default {
             router.put(route('patients.update',this.patients), this.form.patients, {
                 onSuccess: (success) => {
                     this.success = success
-<<<<<<< HEAD
-                    // toast.success('¡Guardado con éxito!')
-=======
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                     console.log(success)
                 },
                 onError: (errors) => {
                     this.errors = errors
-<<<<<<< HEAD
-                    // toast.error('¡Error No Se Actualizo Paciente!')
-=======
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                     console.log(errors)
                 }
             })

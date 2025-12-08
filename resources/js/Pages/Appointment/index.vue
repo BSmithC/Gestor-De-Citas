@@ -55,13 +55,9 @@
                 </div>
 
                 <!-- Appointments Grid -->
-<<<<<<< HEAD
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div v-for="appointment in appointments" :key="appointment.id"
-=======
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     <div v-for="appointment in appointments.data" :key="appointment.id"
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                         class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
                         <!-- Appointment Header -->
                         <div
@@ -145,11 +141,7 @@
                             <!-- Actions -->
                             <div
                                 class="mt-6 flex justify-between items-center pt-4 border-t border-gray-200 dark:border-gray-700">
-<<<<<<< HEAD
-                                <button @click="openModal(appointment)"
-=======
                                 <Link :href="route('appointments.show', appointment.id)"
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                                     class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
@@ -159,126 +151,24 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                     Details
-<<<<<<< HEAD
-                                </button>
-
-                                <!-- Empty State -->
-                                <div v-if="appointments.length === 0" class="col-span-full py-12 text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                    </svg>
-                                    <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">No appointments
-                                        found</h3>
-                                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Create a new appointment to
-                                        get started
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Appointment Details Modal -->
-                        <div v-if="infoModal"
-                            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-                            <div
-                                class="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                                <div class="p-6 space-y-6">
-                                    <div class="flex justify-between items-start">
-                                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Appointment Details
-                                        </h2>
-                                        <button @click="closeModal"
-                                            class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
-
-                                    <div class="space-y-4">
-                                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow-sm">
-                                            <h3 class="font-semibold text-lg text-gray-700 dark:text-white mb-3">
-                                                Appointment
-                                                Information</h3>
-                                            <dl class="space-y-3">
-                                                <div
-                                                    class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-600">
-                                                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                                        Patient Name
-                                                    </dt>
-                                                    <dd class="text-sm font-semibold text-gray-900 dark:text-white">{{
-                                                        form.patient.name }} {{ form.patient.last_name || 'N/A' }}</dd>
-                                                </div>
-                                                <div
-                                                    class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-600">
-                                                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                                        Doctor Name
-                                                    </dt>
-                                                    <dd class="text-sm font-semibold text-gray-900 dark:text-white">{{
-                                                        form.doctor.name }} {{ form.doctor.last_name || 'N/A' }}</dd>
-                                                </div>
-                                                <div
-                                                    class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-600">
-                                                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                                        Appointment
-                                                        Date</dt>
-                                                    <dd class="text-sm font-semibold text-gray-900 dark:text-white">{{
-                                                        form.date }}
-                                                    </dd>
-                                                </div>
-                                                <div
-                                                    class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-600">
-                                                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                                        Time Slot</dt>
-                                                    <dd class="text-sm font-semibold text-gray-900 dark:text-white">{{
-                                                        form.starttime }} - {{ form.endtime }}</dd>
-                                                </div>
-                                                <div
-                                                    class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
-                                                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                                        Status</dt>
-                                                    <dd class="text-sm font-semibold" :class="{
-                                                        'text-green-600 dark:text-green-400': form.active,
-                                                        'text-red-600 dark:text-red-400': !form.active
-                                                    }">
-                                                        {{ form.active ? 'Active' : 'Inactive' }}
-                                                    </dd>
-                                                </div>
-                                            </dl>
-                                        </div>
-                                    </div>
-                                </div>
-=======
                                 </Link>
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             </div>
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
                 <Pagination :pagination="appointments" :value="form" />
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             </div>
         </template>
     </AuthenticatedLayout>
 </template>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
-<<<<<<< HEAD
-=======
 import Pagination from '@/Components/Pagination.vue'
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
 
 export default {
     props: {
@@ -302,19 +192,7 @@ export default {
             replace: true
         });
     },
-<<<<<<< HEAD
-    openModal(appointment) {
-        this.form = { ...appointment };
-        this.infoModal = true;
-    },
-    closeModal() {
-        this.infoModal = false;
-    },
-    data() {
-        return {
-            infoModal: false,
-=======
-    // openModal(appointment) {
+    // openModal(Appointment) {
     //     this.form = { ...appointment };
     //     this.infoModal = true;
     // },
@@ -323,7 +201,6 @@ export default {
     // },
     data() {
         return {
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
             form: {
                 id: '',
                 title: '',
@@ -335,12 +212,7 @@ export default {
                 active: true,
                 search: this.filters.search || '',
                 lastDays: this.filters.lastDays || '1',
-<<<<<<< HEAD
-            }
-=======
             },
-            infoModal: false,
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         };
     },
     components: {
@@ -349,12 +221,7 @@ export default {
         Link,
         LastDays,
         ref,
-<<<<<<< HEAD
-        router
-=======
-        router,
-        Pagination
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
+        Pagination,
     }
 };
 </script>

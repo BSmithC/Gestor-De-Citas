@@ -69,12 +69,6 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('appointments.index')" :active="route().current('appointments.index')">
                                     Appointment
                                 </NavLink>
-<<<<<<< HEAD
-                                <NavLink :href="route('medicalhistories.index')" :active="route().current('medicalhistories.index')">
-                                    Medical History
-                                </NavLink>
-=======
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
                             </div>
                         </div>
 
