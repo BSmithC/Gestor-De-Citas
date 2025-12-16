@@ -2,29 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Patient;
-use App\Models\User;
+use App\Models\Drug;
 use App\Models\Appointment;
-
+use App\Models\Bill;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function dashboard()
     {
-        $patients = Patient::all();
-        $doctors = User::all();
-        $appointments = Appointment::all();
+        $userId = Auth::id();
 
         return Inertia::render('Dashboard', [
-            'patients' => $patients,
-            'doctors' => $doctors,
-            'appointments' => $appointments,
+            'Kpis' => [
+                'PatientsAll' => Patient::all()->count(),
+                'DrugsAll' => Drug::all()->count(),
+                'AppointmentsAll' => Appointment::where('doctor_id', $userId)->count(),
+                'TotalBilling' => Bill::where('users_id', $userId)->sum('total'),
+            ],
         ]);
     }
 }

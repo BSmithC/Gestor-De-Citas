@@ -154,9 +154,10 @@
                                 </tbody>
                             </table>
                         </div>
+                                        <Pagination :pagination="drugs" :filters="form" />
                     </div>
                 </div>
-                <Pagination :pagination="drugs" :filters="form" />
+
             </div>
         </template>
     </AuthenticatedLayout>
@@ -169,6 +170,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
+import Pagination from '@/Components/Pagination.vue';
 export default {
     props: {
         drugs: Object,
@@ -216,7 +218,8 @@ export default {
         AuthenticatedLayout,
         LastDays,
         Link,
-        ref, 
+        ref,
+        Pagination
     },
 };
 </script>

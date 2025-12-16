@@ -13,7 +13,7 @@
                 <!-- Main Content Container -->
                 <div class="max-w-7xl mx-auto">
                     <!-- Action Bar -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 mb-6">
+                    <div class="bg-white dark:bg-gray-800 shadow-md p-4 mb-6">
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <Link :href="route('patients.create')"
                                 class="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-200 shadow-lg transition-all transform hover:scale-105">
@@ -47,7 +47,7 @@
                     </div>
 
                     <!-- Patients Table -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                    <div class="bg-white dark:bg-gray-800  shadow-md overflow-hidden">
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead
@@ -150,8 +150,8 @@
                             </table>
                         </div>
                     </div>
+                                     <Pagination :pagination="patients" :filters="form" />
                 </div>
-                 <Pagination :pagination="patients" :filters="form" />
             </div>
         </template>
     </AuthenticatedLayout>
@@ -164,6 +164,8 @@ import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import LastDays from '@/Components/LastDays.vue';
+import Pagination from '@/Components/Pagination.vue';
+
 export default {
     props: {
         patients: Object,
@@ -192,6 +194,7 @@ export default {
         LastDays,
         Link,
         ref,
+        Pagination,
     }
 };
 </script>
