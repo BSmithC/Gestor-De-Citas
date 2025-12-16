@@ -11,10 +11,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-<<<<<<< HEAD
-=======
         "spatie/laravel-google-calendar": "^3.8",
->>>>>>> 75b04bc (Modificaciones con los show, paginaciones y index)
         "spatie/laravel-permission": "^6.20",
         "tightenco/ziggy": "^2.0"
     },
